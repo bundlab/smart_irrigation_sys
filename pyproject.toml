@@ -1,4 +1,4 @@
-toml[build-system]
+[build-system]
 requires = ["hatchling"]
 build-backend = "hatchling.build"
 
@@ -10,7 +10,7 @@ readme = "README.md"
 requires-python = ">=3.9"
 license = {file = "LICENSE"}
 authors = [
-    {name = "Abdullahi", email = "your.email@example.com"},
+    name = "Abdullahi Bundi", email = "bundipcclinic@gmail.com",
 ]
 keywords = ["iot", "irrigation", "smart-agriculture", "python", "sensors"]
 classifiers = [
