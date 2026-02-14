@@ -1,27 +1,29 @@
 name: CI
 
-on:
-  push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
+on: [push, pull_request]
 
 jobs:
-  test:
+  lint-and-test:
     runs-on: ubuntu-latest
+
     steps:
-    - uses: actions/checkout@v4
-    - name: Set up Python
-      uses: actions/setup-python@v5
-      with:
-        python-version: '3.11'
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install -e ".[dev]"
-    - name: Lint with flake8
-      run: flake8 src tests
-    - name: Format check with black
-      run: black --check src tests
-    - name: Run tests
-      run: pytest
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'  # match your local / project version
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -e ".[dev]"   # this pulls ruff from your pyproject.toml dev extras
+
+      - name: Lint with Ruff
+        run: |
+          ruff check src tests --output-format=github   # nice annotations in PRs
+          ruff format --check src tests                 # fails if formatting needed
+
+      # Add your tests here if not already
+      - name: Run tests
+        run: pytest
