@@ -3,41 +3,24 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-name = "smart-irrigation-system"
+name = "smart_irrigation_sys"
 version = "0.1.0"
-description = "A professional smart irrigation system with soil moisture & weather-based decision making"
+description = "Smart Irrigation System - IoT-based plant watering controller"
 readme = "README.md"
-requires-python = ">=3.9"
-license = {file = "LICENSE"}
-authors = [
-    name = "Abdullahi Bundi", email = "bundipcclinic@gmail.com",
-]
-keywords = ["iot", "irrigation", "smart-agriculture", "python", "sensors"]
-classifiers = [
-    "Programming Language :: Python :: 3",
-    "License :: OSI Approved :: MIT License",
-    "Operating System :: OS Independent",
-]
+requires-python = ">=3.8"
+license = {text = "MIT"}
 
 dependencies = [
-    # Add real dependencies later, e.g.:
-    # "requests>=2.28.0",   # for weather API
-    # "paho-mqtt>=1.6.1",   # for MQTT IoT
+    # Add real deps here later, e.g. "paho-mqtt", etc.
 ]
 
 [project.optional-dependencies]
 dev = [
-    "pytest>=7.4",
-    "black>=24.0",
-    "isort>=5.12",
-    "flake8>=6.0",
-    "mypy>=1.5",
+    "black",
+    "ruff",
+    "pytest",
+    "pytest-cov",
 ]
 
-[project.scripts]
-smart-irrigate = "smart_irrigation.__main__:main"
-
-[project.urls]
-"Homepage" = "https://github.com/bundlab/smart-irrigation-system"
-"Repository" = "https://github.com/bundlab/smart-irrigation-system"
-"Bug Tracker" = "https://github.com/bundlab/smart-irrigation-system/issues"
+[tool.hatch.build.targets.wheel]
+packages = ["src/smart_irrigation"]
