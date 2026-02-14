@@ -1,8 +1,13 @@
 import logging
 import random
 
+
 class IrrigationSystem:
-    def __init__(self, soil_moisture_threshold: float = 30.0, rain_probability_threshold: float = 0.5):
+    def __init__(
+        self,
+        soil_moisture_threshold: float = 30.0,
+        rain_probability_threshold: float = 0.5,
+    ):
         self.soil_moisture_threshold = soil_moisture_threshold
         self.rain_probability_threshold = rain_probability_threshold
         self.logger = logging.getLogger(__name__)
@@ -29,7 +34,10 @@ class IrrigationSystem:
 
         self.logger.info(f"Soil moisture: {moisture:.1f}% | Rain prob: {rain_prob:.1%}")
 
-        if moisture < self.soil_moisture_threshold and rain_prob < self.rain_probability_threshold:
+        if (
+            moisture < self.soil_moisture_threshold
+            and rain_prob < self.rain_probability_threshold
+        ):
             self.irrigate(dry_run=dry_run)
         else:
             self.logger.info("No irrigation needed today 🌱")
