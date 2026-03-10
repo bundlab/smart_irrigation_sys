@@ -34,33 +34,38 @@ Decides intelligently when to water plants by combining **soil moisture levels**
 
 
 ## Project Structure
----text
-smart_irrigation_sys/                  	  # ← Root folder (repository name)
-├── src/                                  # ← All source code goes here (avoids import issues)
-│   └── smart_irrigation/                 # ← Actual Python package (importable name)
-│       ├── __init__.py
-│       ├── __main__.py                   # ← Entry point when running `python -m smart_irrigation`
-│       ├── core.py                       # ← Main business logic (IrrigationSystem class)
-│       ├── sensors.py                    # ← Sensor simulation / real hardware interfaces
-│       ├── weather.py                    # ← Weather API integration (future)
-│       ├── config.py                     # ← Configuration loading (thresholds, etc.)
-│       └── utils.py                      # ← Helpers (logging setup, etc.)
-├── tests/                                # ← Unit & integration tests
+smart-irrigation-platform/
+│
+├── src/                          # Main source code
 │   ├── __init__.py
-│   ├── test_core.py
-│   └── test_sensors.py
-├── .github/                              # ← GitHub Actions (CI/CD)
-│   └── workflows/
-│       └── ci.yml                        # ← Basic tests + linting on push/PR
-├── docs/                                 # ← Documentation (Sphinx or MkDocs later)
-├── examples/                             # ← Example usage scripts
-├── data/                                 # ← Sample data, configs, or logs (optional)
+│   ├── main.py                   # Entry point
+│   ├── core/
+│   │   ├── __init__.py
+│   │   └── irrigation_system.py  # Core business logic
+│   ├── sensors/
+│   │   ├── __init__.py
+│   │   └── soil_moisture.py      # Sensor abstractions
+│   ├── weather/
+│   │   ├── __init__.py
+│   │   └── weather_service.py    # Weather data (simulated or API)
+│   └── utils/
+│       ├── __init__.py
+│       └── logger.py             # Centralized logging
+│
+├── tests/                        # Unit & integration tests
+│   ├── __init__.py
+│   └── test_irrigation_system.py
+│
+├── config/
+│   └── config.py                 # Configuration (thresholds, etc.)
+│
+├── .env                          # Environment variables (not in git)
+├── .env.example                  # Template for .env
 ├── .gitignore
-├── LICENSE
 ├── README.md
-├── pyproject.toml                        # ← Modern configuration (replaces setup.py)
-├── requirements.txt                      # ← For simple installs (optional)
-└── requirements-dev.txt                  # ← Development tools (black, pytest, etc.)
+├── requirements.txt
+├── setup.py                      # Optional: for packaging
+└── LICENSE
 
 
 ## 🛠 Prerequisites
