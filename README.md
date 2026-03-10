@@ -34,6 +34,7 @@ Decides intelligently when to water plants by combining **soil moisture levels**
 
 
 ## Project Structure
+---text
 smart_irrigation_sys/                  	  # ← Root folder (repository name)
 ├── src/                                  # ← All source code goes here (avoids import issues)
 │   └── smart_irrigation/                 # ← Actual Python package (importable name)
@@ -72,7 +73,7 @@ smart_irrigation_sys/                  	  # ← Root folder (repository name)
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/smart_irrigation_sys.git
+   git clone https://github.com/bundlab/smart_irrigation_sys.git
    cd smart_irrigation_sys
 
 ## ⚡ Quick Start
